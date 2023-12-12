@@ -1,0 +1,156 @@
+\section{Расчет режима резания}
+
+
+\subsection{Операция сверлильная}
+
+
+
+\subsubsection{Исходные данные}
+
+% Исходные данные приведены в таблице \ref{tab:61}
+
+% \begin{tabular}
+%     \label{tab:61}
+    \begin{longtable}{|c|c|}
+        \caption{Исходные данные} \\
+        \hline Параметр & Значение \\
+        \endhead
+        \hline Отверстие & Сквозное \\
+        \hline Материал & Сталь 45 \\
+        \hline Предел прочности, $\sigma_{\text{в}}$ & 600, МПа \\
+        \hline Твердость, $HB$ & 170, МПа \\
+        \hline Диаметр отверстия, $D$ & 36, мм \\
+        \hline Длина отверстия, $L$ & 60, мм \\
+        \hline
+    \end{longtable}
+% \end{tabular}
+
+
+
+
+\subsubsection{Режущий инструмент и режим сверления}
+
+Так как диаметр отверстия больше $25$ мм, то сверление проводится в два подхода. Для обработки сквозного отверстия $D=36H14$ и шероховатостью $Rz=20$ на токарно-винторезном станке 16к20 применим операции сверления и рассверливания. Диаметр отверстия после сверления и рассверливания:
+
+\begin{equation}
+	d = D = 36 \text{ мм}
+\end{equation}
+
+
+
+\subsubsection{Сверление}
+
+Для сверления выбирается спиральное сверло диаметра
+\begin{equation}
+	d\sv = d \cdot 0.6 = 21.59 \to 22 \dmm .
+\end{equation}
+
+Материал сверла $P18$ \cite{2}. Определяется глубина резания
+\begin{equation}
+	t\sv = 0.5 \cdot d\sv = 11 \dmm ,
+\end{equation}
+
+подача \cite{1}, скорректированная по паспорту станка \cite{3}
+\begin{equation}
+	S\sv = 0.38 \div 0.43 \to 0.4 \dmm ,
+\end{equation}
+
+скорость резания \cite{1}:
+\begin{equation}
+	V\sv = \frac{C_v \cdot d\sv^{q}}{T\sv^{m}S\sv^{y}} \cdot K_v = \frac{9.8 \cdot 22^{0.4}}{50^{0.2} \cdot 0.4^{0.5}} \cdot 0.347 = 24.39 \text{  м/мин}.
+\end{equation}
+
+Частота вращения шпинделя будет равна
+\begin{equation}
+	n\sv = \frac{1000 \cdot V\sv}{\pi d\sv} = 353.2 \text{  об/мин},
+\end{equation}
+скорректировав по паспортным данным станка, получим $n\sv = 400$ об/мин.
+
+Действительная скорость резца тогда будет 
+\begin{equation}
+	V\sv = \frac{\pi \cdot d\sv \cdot n\sv}{1000} = 27.6 \text{  м/мин} .
+\end{equation}
+
+Крутящий момент вычисляем по формуле
+\begin{equation}
+	M_\text{кр} = 10 \cdot C_m \cdot d\sv^q \cdot S\sv^y \cdot K_p = 10 \cdot 0.0345 \cdot 22^{2} \cdot 0.4^{0.7} \cdot 0.885 = 67 \text{  Н*м} .
+\end{equation}
+
+Определяем осевую силу
+\begin{equation}
+	Po\sv = 10 \cdot C_p \cdot d\sv^q \cdot S\sv^y \cdot K_p = 10 \cdot 68 \cdot 22^{1} \cdot 0.4^{0.7} \cdot 0.885 = 6663 \text{  Н},
+\end{equation}
+мощность резания
+\begin{equation}
+	Np\sv = \frac{M_\text{кр} \cdot n\sv}{9750} = 2.78 \text{  кВт}.
+\end{equation}
+
+При мощности станка $N_\text{э} = N_\text{д} \cdot \eta = 10 \cdot 0.75 = 7.5$ кВт операция осуществима. Определяем время обработки $l_1 = 8$
+\begin{equation}
+    T\sv = \frac{L + l_1}{S\sv \cdot n\sv} = 0.425 \dmin.
+\end{equation}
+
+
+
+
+\subsubsection{Рассверливание}
+
+Для рассверливания выбирается спиральное сверло диаметра
+\begin{equation}
+	d\rv = D = 36 \dmm .
+\end{equation}
+
+Материал сверла $P18$ \cite{2}. Определяется глубина резания
+\begin{equation}
+	t\rv = 0.5 \cdot (d\rv - d\sv) = 7 \dmm ,
+\end{equation}
+
+подача \cite{1}, скорректированная по паспорту станка \cite{3}
+\begin{equation}
+	S\rv = 0.48 \div 0.58 \to 0.5 \dmm ,
+\end{equation}
+
+скорость резания \cite{1}:
+\begin{equation}
+	V\rv = \frac{C_v \cdot d\rv^{q}}{T\rv^{m}S\rv^{y}} \cdot K_v = \frac{16.2 \cdot 36^{0.4}}{70^{0.2} \cdot 0.5^{0.5}} \cdot 0.347 = 27.8 \text{  м/мин}.
+\end{equation}
+
+Частота вращения шпинделя будет равна
+\begin{equation}
+	n\rv = \frac{1000 \cdot V\rv}{\pi d\rv} = 246.2 \text{  об/мин},
+\end{equation}
+скорректировав по паспортным данным станка, получим $n\rv = 250$ об/мин.
+
+Действительная скорость резца тогда будет 
+\begin{equation}
+	V\rv = \frac{\pi \cdot d\rv \cdot n\rv}{1000} = 28.26 \text{  м/мин} .
+\end{equation}
+
+Крутящий момент вычисляем по формуле
+\begin{equation}
+	M_\text{кр} = 10 \cdot C_m \cdot d\rv^q \cdot t\rv^x \cdot S\rv^y \cdot K_p = 
+                10 \cdot 0.09 \cdot 36^{1} \cdot 7^{0.9} \cdot 0.5^{0.8} \cdot 0.845 = 90.7 \text{  Н*м} .
+\end{equation}
+
+Определяем осевую силу
+\begin{equation}
+	Po\rv = 10 \cdot C_p \cdot t\rv^x \cdot S\rv^y \cdot K_p = 
+            10 \cdot 67 \cdot 7^{1.2} \cdot 0.5^{0.65} \cdot 0.885 = 3731 \text{  Н},
+\end{equation}
+мощность резания
+\begin{equation}
+	Np\rv = \frac{M_\text{кр} \cdot n\rv}{9750} = 2.32 \text{  кВт}.
+\end{equation}
+
+При мощности станка $N_\text{э} = N_\text{д} \cdot \eta = 10 \cdot 0.75 = 7.5$ кВт операция осуществима. Определяем время обработки $l_1 = 0.6$
+\begin{equation}
+    T\rv = \frac{L + l_1}{S\rv \cdot n\rv} = 0.484 \dmin.
+\end{equation}
+
+Общее технологическое время
+\begin{equation}
+	T = T\sv + T\rv = 0.9 \dmin.
+\end{equation}
+
+
+% \clearpage

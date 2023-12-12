@@ -1,0 +1,156 @@
+%!TEX TS-program = xelatex
+
+% Author: Amet Umerov (admin@amet13.name)
+% https://github.com/Amet13/bachelor-diploma
+% Tuned for MAI by Rodin Fedor
+% Forked by you
+
+% НАСТРОЙКИ ФОРМАТИРОВАНИЯ
+
+\def \EmptyPageAfterTitle {}			% закомментировать, если не нужна пустая страница после титульной
+% \def \TwoSided {}						% если не закомментировано, то поля слева и справа будут чередоваться, нужно для двухсторонней печати. Если предполагается односторонняя печать, закомментируйте.
+
+% НАСТРОЙКИ ИМЕН, УЧЕНЫХ СТЕПЕНЕЙ И Т.П.
+
+\newcommand{\StudentFioLastname}{Гунин}					% фамилия студента
+\newcommand{\StudentFioFirstname}{Филипп}				% имя студента
+\newcommand{\StudentFioSurname}{Алексеевич}				% отчество студента
+
+\newcommand{\StudentKurs}{4}							% курс обучения студента
+\newcommand{\StudentGroup}{М2О-404С-19}					% группа студента
+
+\newcommand{\PrepodFioLastname}{Кожевников}				% фамилия преподавателя
+\newcommand{\PrepodFioFirstname}{Глеб}					% имя преподавателя
+\newcommand{\PrepodFioSurname}{Денисович}				% отчество преподавателя
+
+\newcommand{\PrepodCaptionFirst}{преподаватель}		% первая строчка ученой степени преподавателя
+\newcommand{\PrepodCaptionSecond}{}		% вторая строчка ученой степени преподавателя
+
+
+% НАСТРОЙКИ НАЗВАНИЙ РАБОТЫ
+
+% тип работы (отчет, курсовая работа и т.д.)
+\newcommand{\RabotaType}{РАСЧЕТНАЯ РАБОТА}
+
+% о чем? (строчка после типа работы)
+\newcommand{\RabotaOChem}{по дисциплине «Проектирование технологических процессов»}
+
+% тема или название работы
+\newcommand{\RabotaThemeName}{\pdftitleP}
+
+
+% НАСТРОЙКИ ИНСТИТУТА И КАФЕДРЫ
+
+% номер института
+\newcommand{\InstitutNumber}{2}
+
+% название института без кавычек
+\newcommand{\InstitutName}{Авиационные, ракетные двигатели и энергетические установки}
+
+% номер кафедры
+\newcommand{\KafedraNumber}{205}
+
+% название кафедры без кавычек
+\newcommand{\KafedraName}{Технология производства двигателей летательных аппаратов}
+
+
+\ifx \TwoSided \undefined
+	\documentclass[a4paper,titlepage,14pt]{extarticle}
+\else
+	\documentclass[a4paper,twoside,titlepage,14pt]{extarticle}
+\fi
+
+\input{inc/parameters.tex} % Подключаем список параметров
+\input{inc/preamble} % Подключаем преамбулу
+\usepackage{tabularx}
+\usepackage{makecell}
+
+%%% Начало документа
+\begin{document}
+
+% НАЧАЛО ТИТУЛЬНОГО ЛИСТА
+\begin{titlepage}
+
+\begin{center}
+	\linespread{1.4}
+
+	% Логотип МАИ
+	% \begin{figure}[h!]
+	% 	\includegraphics[scale=0.25]{logo.png}
+	% \end{figure}
+
+	\normalsize{Министерство науки и высшего образования\\ Российской Федерации}\\
+	\vspace{0.25cm}
+	\normalsize{Федеральное государственное бюджетное образовательное\\ учреждение высшего образования}\\
+	\vspace{0.25cm}
+	\normalsize\textbf{«МОСКОВСКИЙ АВИАЦИОННЫЙ ИНСТИТУТ»}\\ {(НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ УНИВЕРСИТЕТ)}\\
+	\noindent\rule{\textwidth}{0.4pt} \\ \vspace{0.25cm}
+	\normalsize
+	{Институт № \InstitutNumber \ «\InstitutName»\\ Кафедра \KafedraNumber \ «\KafedraName»}\\
+	\vfill
+	
+	{\RabotaType}\\
+	{\RabotaOChem}\\
+	\hfill\break	
+	{\RabotaThemeName}\\
+	
+	\vfill
+	
+	\begin{tabularx}{0.95\textwidth}{ l X l l }
+		
+		Выполнил & \makecell[c]{\underline{\hspace{3cm}}} & \makecell[l]{студент \StudentKurs \ курса \\ группы \StudentGroup} & \makecell[r]{\StudentFioLastname \ \StudentFioFirstname \\ \StudentFioSurname} \\
+		
+		\multicolumn{4}{ c }{ } \\
+		
+		Проверил & \makecell[c]{\underline{\hspace{3cm}}} & \makecell[l]{\PrepodCaptionFirst \\ \PrepodCaptionSecond} & \makecell[r]{\PrepodFioLastname \ \PrepodFioFirstname \\ \PrepodFioSurname} \\
+		
+	\end{tabularx}
+
+\end{center}
+\hfill \break
+\begin{center} Москва \the\year{} \end{center}
+% \begin{center} Москва 2022 \end{center}
+\thispagestyle{empty} % выключаем отображение номера для этой страницы
+\end{titlepage}
+
+\ifx \EmptyPageAfterTitle \undefined
+\else
+	\newpage
+	\thispagestyle{empty}
+	\mbox{}
+	\newpage
+\fi
+
+%\newpagel
+
+% КОНЕЦ ТИТУЛЬНОГО ЛИСТА
+
+
+% СОДЕРЖАНИЕ 
+\tableofcontents 
+\clearpage
+
+\include{inc/0-intro.tex}
+\include{inc/1-model.tex}
+\include{inc/2-design.tex}
+\include{inc/3-material-specs.tex}
+\include{inc/4-metod.tex}
+\include{inc/5-plan.tex}
+\include{inc/6-rejim.tex}
+\include{inc/7-marshrut.tex}
+
+\include{inc/0-bibliography.tex}
+
+
+% ПРИЛОЖЕНИЯ
+\include{inc/00-app.tex}
+% \includepdf{images/drawing1.pdf}
+
+
+% \hfill \break
+% \begin{center}
+% 	\LaTeX
+% \end{center}
+
+\end{document}
+%%% Конец документа
