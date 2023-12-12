@@ -1,0 +1,48 @@
+\begin{titlepage}
+    \begin{center}
+        \linespread{1.4}
+    
+        \normalsize{Министерство науки и высшего образования\\ Российской Федерации}\\
+        \vspace{0.25cm}
+        \normalsize{Федеральное государственное бюджетное образовательное\\ учреждение высшего образования}\\
+        \vspace{0.25cm}
+        \normalsize\textbf{«МОСКОВСКИЙ АВИАЦИОННЫЙ ИНСТИТУТ»}\\ {(НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ УНИВЕРСИТЕТ)}\\
+        \noindent\rule{\textwidth}{0.4pt} \\ \vspace{0.25cm}
+        \normalsize
+        {Институт № \InstitutNumber \ «\InstitutName»\\ Кафедра \KafedraNumber \ «\KafedraName»}\\
+        \vfill
+        
+        {\RabotaType}\\
+        {\RabotaOChem}\\
+        \hfill\break	
+        {\RabotaThemeName}\\
+        
+        \vfill	
+        
+        \begin{tabularx}{0.95\textwidth}{ l X l l }
+            
+            Выполнил & \makecell[c]{\underline{\hspace{3cm}}} & \makecell[l]{студент \StudentKurs \ курса \\ группы \StudentGroup} & \makecell[r]{\StudentFioLastname \ \StudentFioFirstname \\ \StudentFioSurname} \\
+            
+            \multicolumn{4}{ c }{ } \\
+            
+            Проверил & \makecell[c]{\underline{\hspace{3cm}}} & \makecell[l]{\PrepodCaptionFirst \\ \PrepodCaptionSecond} & \makecell[r]{\PrepodFioLastname \ \PrepodFioFirstname \\ \PrepodFioSurname} \\
+            
+        \end{tabularx}
+    
+    \end{center}
+    
+    \hfill \break
+    \begin{center} Москва \the\year{} \end{center}
+    % \begin{center} Москва 2022 \end{center}
+    \thispagestyle{empty} % выключаем отображение номера для этой страницы
+\end{titlepage}
+
+\ifx \EmptyPageAfterTitle \undefined
+\else
+    \newpage
+    \thispagestyle{empty}
+    \mbox{}
+    \newpage
+\fi
+
+%\newpagel
